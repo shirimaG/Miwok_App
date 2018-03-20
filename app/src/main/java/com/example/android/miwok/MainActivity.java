@@ -17,6 +17,7 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -29,60 +30,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //find view of the Family textView
-        TextView familyView = (TextView) findViewById(R.id.family);
+        // Find the view pager that will allow the user to swipe between fragments
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        //set OnclicListener on family view
-        familyView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              //Opening a family activity using intent
-                Intent familyIntent = new Intent(view.getContext(),FamilyActivity.class);
-                startActivity(familyIntent);
-                Toast toast = Toast.makeText(view.getContext(),"Open the family list",Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+        // Create an adapter that knows which fragment should be shown on each page
+        CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager());
 
-        //find View of the Colors TextView
-        TextView colorsView= (TextView) findViewById(R.id.colors);
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
 
-        //create colors onClickListener
-        colorsView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent colorsIntent = new Intent(MainActivity.this,ColorsActivity.class);
-                startActivity(colorsIntent);
-                Toast toast =Toast.makeText(MainActivity.this,"Open the Colors List",Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-
-        //Find view for the Phrases TextView
-        TextView phrasesView= (TextView) findViewById(R.id.phrases);
-        //Set OnClick Listener For the Phrases list Activity
-        phrasesView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent phrasesIntent =new Intent(MainActivity.this,PhraseActivity.class);
-                startActivity(phrasesIntent);
-                Toast toast=Toast.makeText(MainActivity.this,"Open the Phrases List",Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-
-        //Fnd View for the Numbers TextView
-        TextView numbersView= (TextView) findViewById(R.id.numbers);
-        //Set OnLick Listener for Numbers List Activity
-        numbersView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent numbersIntent=new Intent(MainActivity.this,NumbersActivity.class);
-                startActivity(numbersIntent);
-                Toast toast=Toast.makeText(MainActivity.this,"Open the Numbers List",Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
     }
 
 }
