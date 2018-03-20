@@ -16,6 +16,7 @@ public class CategoryAdapter extends FragmentPagerAdapter{
 
     public CategoryAdapter(Context context, FragmentManager fm) {
         super(fm);
+        //Actually this context used to refer the tabs
         mContext=context;
 
     }
